@@ -1,8 +1,8 @@
 <form on:submit|preventDefault={() => handleSubmit(cep)}>
     <label>
         <strong>CEP:</strong>
-        <input bind:value={cep} type="text" placeholder='Insira um CEP válido.' required>
-        <input type="submit">
+        <input bind:value={cep} type="text" placeholder='Insira um CEP válido.' pattern="[0-9]&#123;5&#125;[\-]?[0-9]&#123;3&#125;" required>
+        <input type="submit" value="Calcular">
     </label>
     <p>{information}</p>
 </form>
@@ -25,15 +25,17 @@
     }
 
     catch{
-        cep = 'CEP Inválido'
+        cep = '';
+        information = 'Erro ao verificar o CEP informado.';
         return;
     }
 
-    if(freteData.erro){
+    if(freteData.erro === true){
         globalFrete.set(0);
         cep = '';
         information = 'Erro ao verificar o CEP informado.';
     }
+
     else if(freteData.uf === "RN" || freteData.uf === "CE" || freteData.uf === "PE" || freteData.uf === "MA" || freteData.uf === "SE" || freteData.uf === "PI" || freteData.uf === "PB" || freteData.uf === "BA"){
         globalFrete.set(0);
         cep = '';
