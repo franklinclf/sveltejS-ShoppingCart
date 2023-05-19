@@ -65,6 +65,7 @@
     .item-container {
         position: relative;
         width: 14vw;
+        height: 35vh;
         background-color: #FAFAFA;
         box-shadow: 0px 0px 6px 2px #ECECEC;
         border-radius: 0.5vw;
